@@ -14,8 +14,6 @@ const Background = (props) => {
   //   texture.image.height
   // ).fromEquirectangularTexture(gl, texture);
 
-  // console.log({ formatted });
-
   return <primitive attach="background" object={texture} />;
 };
 

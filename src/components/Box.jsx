@@ -1,15 +1,12 @@
-import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
+import { useBox } from "@react-three/cannon";
+import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 
 const Box = (props) => {
-  const ref = useRef();
+  const [ref, api] = useBox(() => ({ mass: 1, ...props }));
   const texture = useLoader(THREE.TextureLoader, "/wood.jpeg");
   // const texture = useLoader(THREE.TextureLoader, "/nicolascage.jpeg");
-  useFrame((state) => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-  });
 
   const handlePointerDown = (e) => {
     e.object.active = true;
@@ -40,13 +37,14 @@ const Box = (props) => {
     <mesh
       ref={ref}
       {...props}
+      api={api}
       castShadow
       onPointerDown={handlePointerDown}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
     >
-      {/* <boxGeometry args={[1, 1, 1]} /> */}
-      <sphereGeometry args={[1, 100, 100]} />
+      <boxGeometry args={[1, 1, 1]} />
+      {/* <sphereGeometry args={[1, 100, 100]} /> */}
       <meshPhysicalMaterial map={texture} />
     </mesh>
   );
