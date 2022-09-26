@@ -24,15 +24,43 @@ const Box = (props) => {
     ref.current.rotation.x += 0.01;
     ref.current.rotation.y += 0.01;
   });
+
+  const handlePointerDown = (e) => {
+    e.object.active = true;
+    if (window.activeMesh) {
+      window.activeMesh.active = false;
+      scaleDown(window.activeMesh);
+    }
+    window.activeMesh = e.object;
+  };
+  const handlePointerEnter = (e) => {
+    e.object.scale.x = 1.5;
+    e.object.scale.y = 1.5;
+    e.object.scale.z = 1.5;
+  };
+  const handlePointerLeave = (e) => {
+    if (!e.object.active) {
+      scaleDown(e.object);
+    }
+  };
+
+  const scaleDown = (object) => {
+    object.scale.x = 1;
+    object.scale.y = 1;
+    object.scale.z = 1;
+  };
+
   return (
     <mesh
       ref={ref}
       {...props}
       castShadow
-      // receiveShadow
+      onPointerDown={handlePointerDown}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
     >
-      {/* <boxGeometry /> */}
-      <sphereGeometry args={[1, 100, 100]} />
+      <boxGeometry args={[1, 1, 1]} />
+      {/* <sphereGeometry args={[1, 100, 100]} /> */}
       <meshPhysicalMaterial map={texture} />
     </mesh>
   );
@@ -75,8 +103,32 @@ const Background = (props) => {
 };
 
 function App() {
+  const handleClick = (e) => {
+    if (!window.activeMesh) return;
+    window.activeMesh.material.color = new THREE.Color(
+      e.target.style.background
+    );
+  };
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
+      <div style={{ position: "absolute", zIndex: 1 }}>
+        <div
+          onClick={handleClick}
+          style={{ background: "blue", height: 50, width: 50 }}
+        />
+        <div
+          onClick={handleClick}
+          style={{ background: "purple", height: 50, width: 50 }}
+        />
+        <div
+          onClick={handleClick}
+          style={{ background: "yellow", height: 50, width: 50 }}
+        />
+        <div
+          onClick={handleClick}
+          style={{ background: "white", height: 50, width: 50 }}
+        />
+      </div>
       <Canvas
         shadows
         style={{ background: "black" }}
@@ -91,8 +143,10 @@ function App() {
         <Suspense fallback={null}>
           <Box position={[0, 1, 0]} />
         </Suspense>
-
-        <Floor position={[0, -0.5, 0]} />
+        <Suspense fallback={null}>
+          <Box position={[-4, 1, 0]} />
+        </Suspense>
+        <Floor position={[4, -0.5, 0]} />
         <Suspense fallback={null}>
           <Background />
         </Suspense>
