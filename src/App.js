@@ -58,13 +58,13 @@ const Bulb = (props) => {
 };
 
 const Background = (props) => {
-  // const { gl } = useThree();
-  const texture = useLoader(THREE.TextureLoader, "/aquaduct.jpeg");
+  const texture = useLoader(THREE.TextureLoader, "/autoshop.jpeg");
 
   texture.encoding = THREE.sRGBEncoding;
   texture.mapping = THREE.EquirectangularReflectionMapping;
 
   // wasn't working
+  // const { gl } = useThree();
   // const formatted = new THREE.WebGLCubeRenderTarget(
   //   texture.image.height
   // ).fromEquirectangularTexture(gl, texture);
