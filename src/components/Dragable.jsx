@@ -30,7 +30,7 @@ const Dragable = (props) => {
       e.object.api.position.copy(e.object.position);
       e.object.api.velocity.set(0, 0, 0);
     });
-  }, [children]);
+  }, [children, scene.orbitControls]);
   return (
     <group ref={groupRef}>
       <dragControls

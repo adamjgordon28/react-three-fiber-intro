@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import React from "react";
 import { useBox } from "@react-three/cannon";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 
 const Box = (props) => {
