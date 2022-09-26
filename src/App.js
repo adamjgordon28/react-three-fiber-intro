@@ -19,7 +19,8 @@ const Orbit = () => {
 
 const Box = (props) => {
   const ref = useRef();
-  const texture = useLoader(THREE.TextureLoader, "/wood.jpeg");
+  // const texture = useLoader(THREE.TextureLoader, "/wood.jpeg");
+  const texture = useLoader(THREE.TextureLoader, "/nicolascage.jpeg");
   useFrame((state) => {
     ref.current.rotation.x += 0.01;
     ref.current.rotation.y += 0.01;
@@ -59,8 +60,8 @@ const Box = (props) => {
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
     >
-      <boxGeometry args={[1, 1, 1]} />
-      {/* <sphereGeometry args={[1, 100, 100]} /> */}
+      {/* <boxGeometry args={[1, 1, 1]} /> */}
+      <sphereGeometry args={[1, 100, 100]} />
       <meshPhysicalMaterial map={texture} />
     </mesh>
   );
@@ -86,7 +87,8 @@ const Bulb = (props) => {
 };
 
 const Background = (props) => {
-  const texture = useLoader(THREE.TextureLoader, "/autoshop.jpeg");
+  const texture = useLoader(THREE.TextureLoader, "/nicolascage.jpeg");
+  // const texture = useLoader(THREE.TextureLoader, "/autoshop.jpeg");
 
   texture.encoding = THREE.sRGBEncoding;
   texture.mapping = THREE.EquirectangularReflectionMapping;
