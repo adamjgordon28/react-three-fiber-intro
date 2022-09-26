@@ -10,6 +10,7 @@ import Bulb from "./components/Bulb";
 import ColorPicker from "./components/ColorPicker";
 import Dragable from "./components/Dragable";
 import Floor from "./components/Floor";
+import Model from "./components/Model";
 import Orbit from "./components/Orbit";
 
 function App() {
@@ -29,10 +30,16 @@ function App() {
           <Dragable>
             <Bulb position={[0, 3, 0]} />
             <Suspense fallback={null}>
-              <Box position={[0, 1, 0]} />
-            </Suspense>
-            <Suspense fallback={null}>
-              <Box position={[-4, 1, 0]} />
+              <Model
+                path="/tesla_model_sciv/scene.gltf"
+                position={[2, 0.15, 0]}
+                scale={new Array(3).fill(0.01)}
+              />
+              <Model
+                path="/tesla_model_x/scene.gltf"
+                position={[-2, 0.85, 0]}
+                // scale={new Array(3).fill(0.01)}
+              />
             </Suspense>
           </Dragable>
           <Floor position={[4, -0.5, 0]} />
