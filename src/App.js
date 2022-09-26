@@ -3,6 +3,7 @@ import "./App.css";
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import { useRef, useMemo } from "react";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from "three";
 extend({ OrbitControls });
 
 const Orbit = () => {
@@ -45,8 +46,8 @@ function App() {
   const pointsLocations = [
     [0, 0, 0],
     [1, 1, 1],
-    [2, 2, -1],
     [0.5, 2, -1],
+    [2, 2, -1],
   ];
   const pointsCount = pointsLocations.length;
 
@@ -57,8 +58,8 @@ function App() {
       <Canvas style={{ background: "black" }} camera={{ position: [3, 3, 3] }}>
         <Orbit />
         <axesHelper args={[5]} />
-        <Box position={[-1, -1, 2]} />
-        <points>
+        {/* <Box position={[-1, -1, 2]} /> */}
+        {/* <points>
           <bufferGeometry attach="geometry">
             <bufferAttribute
               attach={"attributes-position"} // attribute parameter to be controlled
@@ -67,7 +68,19 @@ function App() {
               itemSize={3} // because it is known that each axis type array will contain 3 values in 1d array
             />
           </bufferGeometry>
-        </points>
+        </points> */}
+        <mesh>
+          <boxGeometry args={[5, 1, 2]} />
+          {/* <meshBasicMaterial side={THREE.DoubleSide} /> */}
+          {/* <bufferGeometry attach="geometry">
+            <bufferAttribute
+              attach={"attributes-position"} // attribute parameter to be controlled
+              array={new Float32Array(pointsLocationsFlat)}
+              count={pointsCount}
+              itemSize={3} // because it is known that each axis type array will contain 3 values in 1d array
+            />
+          </bufferGeometry> */}
+        </mesh>
       </Canvas>
     </div>
   );
