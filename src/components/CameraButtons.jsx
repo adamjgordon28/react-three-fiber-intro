@@ -18,14 +18,14 @@ const style = {
 const CameraButtons = () => {
   const sets = {
     1: {
-      cameraPos: [9, 2, 4],
+      cameraPos: [10, 2, 3],
       name: "object005_bod_0",
-      target: [4, 0, 0],
+      target: [7, 0, 0],
     },
     2: {
-      cameraPos: [1, 2, 5],
+      cameraPos: [4, 2, 3],
       name: "Object_47",
-      target: [-4, 0, 0],
+      target: [1, 0, 0],
     },
   };
   const handleClick = (num) => {

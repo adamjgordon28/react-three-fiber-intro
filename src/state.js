@@ -6,9 +6,9 @@ import * as THREE from "three";
 const state = {
   activeMesh: {},
   activeMeshName: "object005_bod_0",
-  cameraPos: new THREE.Vector3(9, 2, 4),
+  cameraPos: new THREE.Vector3(10, 2, 3),
   shouldUpdate: true,
-  target: new THREE.Vector3(4, 0, 0),
+  target: new THREE.Vector3(7, 0, 0),
 };
 
 export default state;

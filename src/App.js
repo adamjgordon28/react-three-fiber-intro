@@ -1,12 +1,15 @@
 import "./App.css";
 
 import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
+import { Canvas } from "@react-three/fiber";
+import {
+  Bloom,
+  DepthOfField,
+  EffectComposer,
+} from "@react-three/postprocessing";
 
 import Background from "./components/Background";
-
-// import Box from "./components/Box";
 import CameraButtons from "./components/CameraButtons";
 import CameraControls from "./components/CameraControls";
 import Cars from "./components/Cars";
@@ -34,6 +37,15 @@ function App() {
           <Cars />
           <Floor position={[4, -0.5, 0]} />
         </Physics>
+        <EffectComposer>
+          <DepthOfField
+            focusDistance={0}
+            focalLength={0.02}
+            bokehScale={2}
+            height={480}
+          />
+          <Bloom luminanceThreshold={1} luminanceSmoothing={0.9} height={300} />
+        </EffectComposer>
         <Suspense fallback={null}>
           <Background />
         </Suspense>
