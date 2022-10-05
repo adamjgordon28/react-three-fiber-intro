@@ -8,6 +8,7 @@ import Background from "./components/Background";
 
 // import Box from "./components/Box";
 import Bulb from "./components/Bulb";
+import CameraButtons from "./components/CameraButtons";
 import CameraControls from "./components/CameraControls";
 import Cars from "./components/Cars";
 import ColorPicker from "./components/ColorPicker";
@@ -18,6 +19,7 @@ function App() {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <ColorPicker />
+      <CameraButtons />
       <Canvas
         shadows
         style={{ background: "black" }}
