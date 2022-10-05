@@ -32,7 +32,9 @@ function App() {
         <axesHelper args={[5]} />
 
         <Physics>
+          <Bulb position={[-8, 3, 0]} />
           <Bulb position={[0, 3, 0]} />
+          <Bulb position={[8, 3, 0]} />
           <Cars />
           <Floor position={[4, -0.5, 0]} />
         </Physics>

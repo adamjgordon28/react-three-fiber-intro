@@ -19,16 +19,19 @@ const CameraButtons = () => {
   const sets = {
     1: {
       cameraPos: [9, 2, 4],
+      name: "object005_bod_0",
       target: [4, 0, 0],
     },
     2: {
       cameraPos: [1, 2, 5],
+      name: "Object_47",
       target: [-4, 0, 0],
     },
   };
   const handleClick = (num) => {
     state.cameraPos.set(...sets[num].cameraPos);
     state.target.set(...sets[num].target);
+    state.activeMeshName = sets[num].name;
     state.shouldUpdate = true;
   };
   return (
