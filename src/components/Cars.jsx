@@ -8,8 +8,8 @@ const Cars = () => {
     <Suspense fallback={null}>
       <Dragable transformGroup>
         <BoundingBox
-          visible
-          position={[4, 8, 0]}
+          //   visible
+          position={[7, 8, 0]}
           dims={[2.25, 1.75, 5.5]}
           offset={[0.125, -0.75, 0.25]}
         >
@@ -20,7 +20,11 @@ const Cars = () => {
         </BoundingBox>
       </Dragable>
       <Dragable transformGroup>
-        <BoundingBox visible position={[-4, 8, 0]} dims={[3, 2, 6]}>
+        <BoundingBox
+          // visible
+          position={[1, 8, 0]}
+          dims={[3, 2, 6]}
+        >
           <Model path="/tesla_model_x/scene.gltf" />
         </BoundingBox>
       </Dragable>
