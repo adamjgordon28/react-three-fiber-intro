@@ -1,10 +1,23 @@
 import React from "react";
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
 
 const Model = (props) => {
   const model = useLoader(GLTFLoader, props.path);
+
+  let mixer;
+  if (model.animations.length) {
+    mixer = new THREE.AnimationMixer(model.scene);
+    model.animations.forEach((clip) => {
+      const action = mixer.clipAction(clip);
+      action.play();
+    });
+  }
+
+  useFrame((scene, delta) => {
+    mixer?.update(delta);
+  });
 
   model.scene.traverse((child) => {
     if (child.isMesh) {

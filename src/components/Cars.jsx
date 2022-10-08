@@ -28,6 +28,11 @@ const Cars = () => {
           <Model path="/tesla_model_x/scene.gltf" />
         </BoundingBox>
       </Dragable>
+      <BoundingBox position={[12, 8, 0]}>
+        <group rotation={[0, Math.PI / 2, 0]}>
+          <Model path="/robot_playground/scene.gltf" />
+        </group>
+      </BoundingBox>
     </Suspense>
   );
 };
